@@ -113,4 +113,4 @@ class Polyomino{
     }
 }
 
-module.exports = Polymino;
+module.exports = Polyomino;
