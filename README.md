@@ -18,3 +18,4 @@ To use:
 Further intended work:
 
 * tile the entire canvas
+* tile a particular shape, as per Kita and Miyata's paper [Computational Design of Polyomino Puzzles](https://naokita.xyz/projects/PolyominoPuzzles/index.html).
