@@ -3,7 +3,8 @@ var router = express.Router();
 const Drawing = require('../drawing.js');
 
 const drawing = new Drawing();
-
+let config = drawing.config;
+console.log({config});
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('polyomino', { 
