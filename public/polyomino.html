@@ -3,13 +3,11 @@
 <body>
 <canvas id="myCanvas" width="7000" height="4000" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
-<script type="text/javascript" src="drawing.js"></script>
 <script>
     //drawPolyomino("nnennesse.enessss.wnnwsswnnwsw",10,1000,20,0,0,4000,1500);
-    callback = () => {
-        drawPolyomino("nnenwnenneeswseenne.esseenwneenesswseswss.wsswwnenwwwswwseswwnnw",10,3900,20,0,0,7000,4000,65);
-    }
-    loadFont(callback);
+    import Drawing from "./javascripts/drawing.js";
+    const drawing = new Drawing();
+    drawing.tileAllCanvases();
 </script>
 </body>
 </html>
