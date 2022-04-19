@@ -8,10 +8,13 @@ class Polyomino{
     }
     tileAllCanvases(){
         Object.keys(this.config).forEach(polyomino => {
+            this.drawPolyomino(polyomino);
+            /*
             const callback = () =>{
                 this.drawPolyomino(polyomino);
             }
             this.loadFont(polyomino,callback);
+            */
         })
     }
 
@@ -76,8 +79,8 @@ class Polyomino{
         let min_diff = Math.min(x_max-x_min,y_max-y_min);
         let textsize = min_diff/(polyomino.length/4);
         let offset = min_diff/(polyomino.length);
-        ctx.font = `${textsize}px ${polyomino.font.name}`;
-        ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
+        //ctx.font = `${textsize}px ${polyomino.font.name}`;
+        //ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
         pointQueue.forEach(point => {
             //console.log(`starting new polyomino at ${point}`)
             let newAscii;
