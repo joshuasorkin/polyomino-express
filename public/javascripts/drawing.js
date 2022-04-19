@@ -112,3 +112,5 @@ class Polyomino{
         });
     }
 }
+
+module.exports = Polymino;
