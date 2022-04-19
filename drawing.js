@@ -8,6 +8,7 @@ class Polyomino{
     }
     tileAllCanvases(){
         Object.keys(this.config).forEach(polyomino => {
+            console.log({polyomino});
             this.drawPolyomino(polyomino);
             /*
             const callback = () =>{
