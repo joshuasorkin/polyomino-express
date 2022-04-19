@@ -2,7 +2,7 @@ const fs = require('fs');
 
 class Polyomino{
     constructor(){
-        let rawData = fs.readFileSync("../config/polyomino-config.json");
+        let rawData = fs.readFileSync("polyomino-config.json");
         this.config = JSON.parse(rawData);
 
     }
