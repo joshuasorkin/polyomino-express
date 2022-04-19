@@ -8,7 +8,7 @@ class Polyomino{
     }
     tileAllCanvases(){
         Object.keys(this.config).forEach(key => {
-            let polyomino = config[key];
+            let polyomino = this.config[key];
             console.log({polyomino});
             this.drawPolyomino(polyomino);
             /*
