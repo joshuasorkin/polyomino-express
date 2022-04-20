@@ -20,9 +20,9 @@ class Drawing{
     }
 
     drawPolyomino(polyomino,canvas,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
-        //if (this.polyominoCount > 150){
-        //    return;
-        //}
+        if (this.polyominoCount > 225){
+            return;
+        }
         if (!pointVisited){
             pointVisited = new Set();
         }
@@ -91,7 +91,9 @@ class Drawing{
             else{
                 newAscii = ascii+1;
             }
+            ctx.fillText("/",point[0],point[1]);
             this.drawPolyomino(polyomino,canvas,polyomino.word,point[0],point[1],newAscii,pointVisited);
+            ctx.fillText("\\",point[0],point[1]);
             this.drawPolyomino(polyomino,canvas,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited);
         });
     }
