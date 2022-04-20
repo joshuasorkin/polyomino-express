@@ -1,28 +1,33 @@
 const fs = require('fs');
 const Canvas = require('canvas');
-
+const { createSVGWindow } = require('svgdom');
+const window = createSVGWindow();
+const SVG = require('svg.js')(window);
+const document = window.document;
 class Drawing{
     constructor(){
         let rawData = fs.readFileSync("polyomino-config.json");
         this.config = JSON.parse(rawData);
         this.dataURLs = [];
         this.polyominoCount = 0;
-
+        this.SVGs = [];
     }
     tileAllCanvases(){
         Object.keys(this.config).forEach(key => {
             let polyomino = this.config[key];
             Canvas.registerFont(polyomino.font.filename,{family:polyomino.font.name});
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
-            this.drawPolyomino(polyomino,canvas);
+            let canvas_svg = SVG(document.documentElement);
+            this.drawPolyomino(polyomino,canvas,canvas_svg);
             this.dataURLs.push(canvas.toDataURL());
+            console.log(canvas_svg.svg());
         })
     }
 
-    drawPolyomino(polyomino,canvas,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
-        //if (this.polyominoCount > 225){
-        //    return;
-        //}
+    drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
+        if (this.polyominoCount > 225){
+            return;
+        }
         if (!pointVisited){
             pointVisited = new Set();
         }
@@ -69,9 +74,10 @@ class Drawing{
             y_max = Math.max(y_max,y);
             ctx.lineTo(x,y);
             ctx.moveTo(x,y);
-            //let newLine = document.createAttributeNS("http://www.w3.org/2000/svg","line")
+            canvas_svg.line(x_prev,y_prev,x,y);
         });
         ctx.stroke();
+        canvas_svg.stroke();
         this.polyominoCount++;
         let x_avg = this.average(x_min,x_max);
         let y_avg = this.average(y_min,y_max);
@@ -89,8 +95,8 @@ class Drawing{
                 newAscii = ascii+1;
             }
             
-            this.drawPolyomino(polyomino,canvas,polyomino.word,point[0],point[1],newAscii,pointVisited);
-            this.drawPolyomino(polyomino,canvas,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited);
         });
     }
 
