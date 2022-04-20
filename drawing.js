@@ -90,7 +90,7 @@ class Drawing{
                 newAscii = ascii+1;
             }
             this.drawPolyomino(polyomino,canvas,polyomino.word,point[0],point[1],newAscii,pointVisited);
-            this.drawPolyomino(polyomino,canvas,polyomino.wordAntipode,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited);
         });
     }
 
