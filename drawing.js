@@ -13,7 +13,6 @@ class Drawing{
             let polyomino = this.config[key];
             //console.log({polyomino});
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
-            console.log(`width: ${polyomino.width}, height: ${polyomino.height}`);
             this.drawPolyomino(polyomino,canvas);
             let dataURL = canvas.toDataURL('image/jpeg',(err,jpeg) => {
                 if(err){
