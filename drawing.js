@@ -24,7 +24,7 @@ class Drawing{
         })
     }
 
-    drawPolyomino(polyomino,canvas,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
+    drawPolyomino(polyomino,canvas,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
         if (!pointVisited){
             pointVisited = new Set();
         }
@@ -77,20 +77,20 @@ class Drawing{
         let x_avg = this.average(x_min,x_max);
         let y_avg = this.average(y_min,y_max);
         let min_diff = Math.min(x_max-x_min,y_max-y_min);
-        let textsize = min_diff/(polyomino.length/4);
+        let textsize = min_diff/(polyomino.length/2);
         let offset = min_diff/(polyomino.length);
         ctx.font = `${textsize}px ${polyomino.font.name}`;
         ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
         pointQueue.forEach(point => {
-            //console.log(`starting new polyomino at ${point}`)
             let newAscii;
-            if (ascii > polyomino.ascii_end){
+            if (ascii >= polyomino.ascii_end){
                 newAscii = polyomino.ascii_start;
             }
             else{
                 newAscii = ascii+1;
             }
-            this.drawPolyomino(polyomino,canvas,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,polyomino.word,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,polyomino.wordAntipode,point[0],point[1],newAscii,pointVisited);
         });
     }
 
@@ -100,19 +100,6 @@ class Drawing{
             return acc;
         },0);
         return Math.floor(sum/args.length);
-    }
-
-    loadFont(polyomino,callback){
-        let myFont = new FontFace(
-        polyomino.font.name,
-        `url(${polyomino.font.url})`
-        );
-
-        myFont.load().then((font) => {
-            document.fonts.add(font);
-            console.log("Font loaded");
-            callback();
-        });
     }
 }
 

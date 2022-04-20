@@ -1,6 +1,7 @@
 {
     "poly1":{
         "word":"nnenwnenneeswseenne.esseenwneenesswseswss.wsswwnenwwwswwseswwnnw",
+        "word_antipode":"wsswwnenwwwswwseswwnnwnnenwnenneeswseenne.esseenwneenesswseswss.",
         "canvas":{
             "name":"myCanvas",
             "width":7000,
@@ -9,7 +10,7 @@
         "length":10,
         "x_start":10,
         "y_start":3900,
-        "ascii_start":65,
+        "ascii_start":46,
         "ascii_end":90,
         "font":{
             "name":"SirinStencil",
