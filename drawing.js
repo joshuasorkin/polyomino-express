@@ -19,7 +19,7 @@ class Drawing{
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
             let canvas_svg = SVG(document.documentElement);
             //this.drawPolyomino(polyomino,canvas,canvas_svg);
-            canvas_svg.line(x_prev,y_prev,x,y);
+            canvas_svg.line(0,0,500,500);
             canvas_svg.stroke();
             //this.dataURLs.push(canvas.toDataURL());
             this.SVGs.push(canvas_svg.svg());
