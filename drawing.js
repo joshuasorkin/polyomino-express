@@ -11,24 +11,10 @@ class Drawing{
     tileAllCanvases(){
         Object.keys(this.config).forEach(key => {
             let polyomino = this.config[key];
-            //console.log({polyomino});
+            Canvas.registerFont(polyomino.font.filename,{family:polyomino.font.name});
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
-            //canvas.getContext("2d").fillText("abcde",100,100);
             this.drawPolyomino(polyomino,canvas);
             this.dataURLs.push(canvas.toDataURL());
-            /*
-            let dataURL = canvas.toDataURL('image/jpeg',(err,jpeg) => {
-                if(err){
-                    console.log({err});
-                }
-                else{
-                    //console.log({jpeg})
-                    this.dataURLs.push(jpeg);
-                }
-            });
-            */
-            
-
             /*
             const callback = () =>{
                 this.drawPolyomino(polyomino);
@@ -55,8 +41,6 @@ class Drawing{
         let y_max = y;
         let length = polyomino.length;
         polyomino.word.toLowerCase().split('').forEach(direction => {
-            //console.log(`x: ${x} y: ${y}`);
-            //console.log({direction});
             let x_prev = x;
             let y_prev = y;
             switch(direction){
@@ -76,12 +60,8 @@ class Drawing{
                     let pointKey = `${x} ${y}`;
                     if(!pointVisited.has(pointKey)){
                         let point = [x,y];
-                        //console.log(`adding to pointQueue: ${point}`);
                         pointQueue.push(point);
                         pointVisited.add(pointKey);
-                    }
-                    else{
-                        //console.log(`found point at ${pointKey}`);
                     }
                     break;
             }
@@ -99,8 +79,8 @@ class Drawing{
         let min_diff = Math.min(x_max-x_min,y_max-y_min);
         let textsize = min_diff/(polyomino.length/4);
         let offset = min_diff/(polyomino.length);
-        //ctx.font = `${textsize}px ${polyomino.font.name}`;
-        //ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
+        ctx.font = `${textsize}px ${polyomino.font.name}`;
+        ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
         pointQueue.forEach(point => {
             //console.log(`starting new polyomino at ${point}`)
             let newAscii;
