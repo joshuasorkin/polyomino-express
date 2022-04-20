@@ -25,7 +25,7 @@ class Drawing{
     }
 
     drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
-        if (this.polyominoCount > 225){
+        if (this.polyominoCount > 10){
             return;
         }
         if (!pointVisited){
