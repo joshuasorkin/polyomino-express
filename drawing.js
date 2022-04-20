@@ -20,7 +20,7 @@ class Drawing{
             let canvas_svg = SVG(document.documentElement);
             this.drawPolyomino(polyomino,canvas,canvas_svg);
             this.dataURLs.push(canvas.toDataURL());
-            console.log(canvas_svg.svg());
+            this.SVGs.push(canvas_svg.svg());
         })
     }
 

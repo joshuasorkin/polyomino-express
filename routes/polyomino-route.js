@@ -8,7 +8,8 @@ drawing.tileAllCanvases();
 router.get('/', function(req, res, next) {
     res.render('polyomino', { 
         title: 'Polyomino',
-        dataURLs: drawing.dataURLs
+        dataURLs: drawing.dataURLs,
+        SVGs: drawing.SVGs
     });
 });
 
