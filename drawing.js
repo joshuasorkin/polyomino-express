@@ -79,10 +79,7 @@ class Drawing{
         let textsize = min_diff/(polyomino.length/2);
         let offset = min_diff/(polyomino.length);
         ctx.font = `${textsize}px ${polyomino.font.name}`;
-        //ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
-        if(word === polyomino.word_antipode){
-            ctx.fillText("A",x_avg-offset,y_avg);
-        }
+        ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
         pointQueue.forEach(point => {
             let newAscii;
             if (ascii >= polyomino.ascii_end){
@@ -91,9 +88,8 @@ class Drawing{
             else{
                 newAscii = ascii+1;
             }
-            ctx.fillText("/",point[0],point[1]);
+            
             this.drawPolyomino(polyomino,canvas,polyomino.word,point[0],point[1],newAscii,pointVisited);
-            ctx.fillText("\\",point[0],point[1]);
             this.drawPolyomino(polyomino,canvas,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited);
         });
     }
