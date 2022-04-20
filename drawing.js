@@ -32,7 +32,6 @@ class Drawing{
         if (x < 0 || y < 0 || x > polyomino.canvas.width || y > polyomino.canvas.height){
             return;
         }
-        //var c = document.getElementById(polyomino.canvas.name);
         var ctx = canvas.getContext("2d");
         ctx.beginPath();
         ctx.moveTo(x,y);
@@ -41,6 +40,7 @@ class Drawing{
         let x_max = x;
         let y_min = y;
         let y_max = y;
+        let length = polyomino.length;
         polyomino.word.toLowerCase().split('').forEach(direction => {
             //console.log(`x: ${x} y: ${y}`);
             //console.log({direction});
@@ -97,7 +97,7 @@ class Drawing{
             else{
                 newAscii = ascii+1;
             }
-            this.drawPolyomino(polyomino,word,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,point[0],point[1],newAscii,pointVisited);
         });
     }
 
