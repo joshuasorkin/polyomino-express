@@ -26,12 +26,15 @@ class Drawing{
         })
     }
 
-    drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
+    drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null,lineExists = null){
         //if (this.polyominoCount > 100){
         //    return;
         //}
         if (!pointVisited){
             pointVisited = new Set();
+        }
+        if (!lineExists){
+            lineExists = new Set();
         }
         if (x < 0 || y < 0 || x > polyomino.canvas.width || y > polyomino.canvas.height){
             return;
@@ -76,11 +79,16 @@ class Drawing{
             y_max = Math.max(y_max,y);
             ctx.lineTo(x,y);
             ctx.moveTo(x,y);
-            canvas_svg.line(x_prev,y_prev,x,y);
+            let lineKey = `${x_prev} ${y_prev} ${x} ${y}`;
+            if (!lineExists.has(lineKey)){
+                canvas_svg.line(x_prev,y_prev,x,y);
+                lineExists.add(lineKey);
+            }
         });
         ctx.stroke();
         //canvas_svg.stroke("green");
         this.polyominoCount++;
+        console.log(`${this.polyominoCount}`)
         let x_avg = this.average(x_min,x_max);
         let y_avg = this.average(y_min,y_max);
         let min_diff = Math.min(x_max-x_min,y_max-y_min);
