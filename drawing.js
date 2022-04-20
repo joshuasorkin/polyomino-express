@@ -15,9 +15,16 @@ class Drawing{
             let canvas = Canvas.createCanvas(polyomino.width,polyomino.height);
             //this.drawPolyomino(polyomino,canvas);
             canvas.getContext('2d').fillText('Awesome!', 50, 100)
-            let dataURL = canvas.toDataURL();
-            console.log({dataURL})
-            this.dataURLs.push(dataURL);
+            let dataURL = canvas.toDataURL('image/jpeg',(err,jpeg) => {
+                if(err){
+                    console.log({err});
+                }
+                else{
+                    console.log({jpeg})
+                    this.dataURLs.push(jpeg);
+                }
+            });
+            
 
             /*
             const callback = () =>{
