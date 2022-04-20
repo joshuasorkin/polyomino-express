@@ -4,12 +4,12 @@
         "word_antipode":"wsswwnenwwwswwseswwnnwnnenwnenneeswseenne.esseenwneenesswseswss.",
         "canvas":{
             "name":"myCanvas",
-            "width":7000,
-            "height":4000
+            "width":2000,
+            "height":2000
         },
         "length":10,
         "x_start":10,
-        "y_start":3900,
+        "y_start":1900,
         "ascii_start":32,
         "ascii_end":90,
         "font":{
