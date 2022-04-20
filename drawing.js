@@ -6,6 +6,7 @@ class Drawing{
         let rawData = fs.readFileSync("polyomino-config.json");
         this.config = JSON.parse(rawData);
         this.dataURLs = [];
+        this.polyominoCount = 0;
 
     }
     tileAllCanvases(){
@@ -15,12 +16,6 @@ class Drawing{
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
             this.drawPolyomino(polyomino,canvas);
             this.dataURLs.push(canvas.toDataURL());
-            /*
-            const callback = () =>{
-                this.drawPolyomino(polyomino);
-            }
-            this.loadFont(polyomino,callback);
-            */
         })
     }
 
@@ -57,7 +52,7 @@ class Drawing{
                     x-=length;
                     break;
                 case ".":
-                    let pointKey = `${x} ${y}`;
+                    let pointKey = `${x} ${y} ${word}`;
                     if(!pointVisited.has(pointKey)){
                         let point = [x,y];
                         pointQueue.push(point);
