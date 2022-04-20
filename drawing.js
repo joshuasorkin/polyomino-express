@@ -13,7 +13,8 @@ class Drawing{
             let polyomino = this.config[key];
             //console.log({polyomino});
             let canvas = Canvas.createCanvas(polyomino.width,polyomino.height);
-            this.drawPolyomino(polyomino,canvas);
+            //this.drawPolyomino(polyomino,canvas);
+            canvas.getContext('2d').fillText('Awesome!', 50, 100)
             let dataURL = canvas.toDataURL();
             console.log({dataURL})
             this.dataURLs.push(dataURL);
