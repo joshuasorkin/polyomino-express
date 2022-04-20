@@ -38,7 +38,7 @@ class Drawing{
         let y_min = y;
         let y_max = y;
         let length = polyomino.length;
-        polyomino.word.toLowerCase().split('').forEach(direction => {
+        word.toLowerCase().split('').forEach(direction => {
             let x_prev = x;
             let y_prev = y;
             switch(direction){
