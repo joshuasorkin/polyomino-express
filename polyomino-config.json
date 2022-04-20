@@ -1,22 +1,4 @@
 {
-    "poly1":{
-        "word":"nnenwnenneeswseenne.esseenwneenesswseswss.wsswwnenwwwswwseswwnnw",
-        "word_antipode":"wsswwnenwwwswwseswwnnwnnenwnenneeswseenne.esseenwneenesswseswss.",
-        "canvas":{
-            "name":"myCanvas",
-            "width":7000,
-            "height":4000
-        },
-        "length":10,
-        "x_start":10,
-        "y_start":3900,
-        "ascii_start":32,
-        "ascii_end":90,
-        "font":{
-            "name":"SirinStencil",
-            "filename":"SirinStencil-Regular.ttf"
-        }
-    },
     "poly2":{
         "word":"nnenwnenneeswseenne.esseenwneenesswseswss.wsswwnenwwwswwseswwnnw",
         "word_antipode":"wsswwnenwwwswwseswwnnwnnenwnenneeswseenne.esseenwneenesswseswss.",
@@ -26,8 +8,8 @@
             "height":4000
         },
         "length":10,
-        "x_start":100,
-        "y_start":100,
+        "x_start":200,
+        "y_start":200,
         "ascii_start":32,
         "ascii_end":90,
         "font":{
