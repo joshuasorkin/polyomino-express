@@ -20,9 +20,9 @@ class Drawing{
     }
 
     drawPolyomino(polyomino,canvas,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
-        if (this.polyominoCount > 225){
-            return;
-        }
+        //if (this.polyominoCount > 225){
+        //    return;
+        //}
         if (!pointVisited){
             pointVisited = new Set();
         }
