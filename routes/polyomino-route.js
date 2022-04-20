@@ -10,6 +10,9 @@ router.get('/', function(req, res, next) {
         title: 'Polyomino',
         dataURLs: drawing.dataURLs,
         SVGs: drawing.SVGs
+    })
+    .catch(err => {
+        console.log({err});
     });
 });
 
