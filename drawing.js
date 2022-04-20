@@ -18,14 +18,16 @@ class Drawing{
             Canvas.registerFont(polyomino.font.filename,{family:polyomino.font.name});
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
             let canvas_svg = SVG(document.documentElement);
-            this.drawPolyomino(polyomino,canvas,canvas_svg);
-            this.dataURLs.push(canvas.toDataURL());
+            //this.drawPolyomino(polyomino,canvas,canvas_svg);
+            canvas_svg.line(x_prev,y_prev,x,y);
+            canvas_svg.stroke();
+            //this.dataURLs.push(canvas.toDataURL());
             this.SVGs.push(canvas_svg.svg());
         })
     }
 
     drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
-        if (this.polyominoCount > 10){
+        if (this.polyominoCount > 1){
             return;
         }
         if (!pointVisited){
