@@ -10,12 +10,15 @@ An exact polyomino is defined in Beauquier and Nivat's paper:
 > allowed in the tilings we consider. If such a tiling exists the polyomino is called an
 > *exact polyomino*. 
 
+Tested with Chrome 100.0.4896.88
+
 To use:
 
 1. Clone the repo
-2. Open the file **polyomino.html** in your browser (tested with Chrome 100.0.4896.88)
+2. Install modules using **npm install**
+3. Start the app using **npm start**
+4. Visit page [localhost:3000/polyomino](localhost:3000/polyomino)
 
 Further intended work:
 
-* tile the entire canvas
 * tile a particular shape, as per Kita and Miyata's paper [Computational Design of Polyomino Puzzles](https://naokita.xyz/projects/PolyominoPuzzles/index.html).
