@@ -12,15 +12,15 @@ class Drawing{
         Object.keys(this.config).forEach(key => {
             let polyomino = this.config[key];
             //console.log({polyomino});
-            let canvas = Canvas.createCanvas(polyomino.width,polyomino.height);
-            //this.drawPolyomino(polyomino,canvas);
-            canvas.getContext('2d').fillText('Awesome!', 50, 100)
+            let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
+            console.log(`width: ${polyomino.width}, height: ${polyomino.height}`);
+            this.drawPolyomino(polyomino,canvas);
             let dataURL = canvas.toDataURL('image/jpeg',(err,jpeg) => {
                 if(err){
                     console.log({err});
                 }
                 else{
-                    console.log({jpeg})
+                    //console.log({jpeg})
                     this.dataURLs.push(jpeg);
                 }
             });
