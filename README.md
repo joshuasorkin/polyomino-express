@@ -1,6 +1,6 @@
 # Polyomino
 
-This page tiles a canvas with translations of an exact polyomino, and adds ASCII characters inside each tile.  The intended use is to produce a raster image that can be converted into an SVG for use in a laser cutter, so that the tiles can be made into an alphabet jigsaw puzzle toy.
+Polyomino tiles a canvas with translations of an exact polyomino (see below for definition), and adds ASCII characters inside each tile.  The intended use is to produce a raster image that can be converted into an SVG for use in a laser cutter, so that the tiles can be made into an alphabet jigsaw puzzle toy.
 
 An exact polyomino is defined in Beauquier and Nivat's paper:
 [On Translating One Polyomino To Tile the Plane](https://link.springer.com/content/pdf/10.1007/BF02574705.pdf)
@@ -9,6 +9,8 @@ An exact polyomino is defined in Beauquier and Nivat's paper:
 > of the polyomino can tile the plane. Copies that are rotated, for example, are not
 > allowed in the tilings we consider. If such a tiling exists the polyomino is called an
 > *exact polyomino*. 
+
+The app uses the **canvas** package to construct the tiling server-side, and then renders the raster data using Jade. 
 
 Tested with Chrome 100.0.4896.88
 
