@@ -12,7 +12,7 @@ class Drawing{
         Object.keys(this.config).forEach(key => {
             let polyomino = this.config[key];
             console.log({polyomino});
-            let canvas = new Canvas(polyomino.width,polyomino.height);
+            let canvas = Canvas.createCanvas(polyomino.width,polyomino.height);
             this.drawPolyomino(polyomino,canvas);
             this.dataURLs.push(canvas.toDataURL());
 
