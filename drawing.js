@@ -13,8 +13,8 @@ class Drawing{
             let polyomino = this.config[key];
             //console.log({polyomino});
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
-            canvas.getContext("2d").fillText("abcde",100,100);
-            //this.drawPolyomino(polyomino,canvas);
+            //canvas.getContext("2d").fillText("abcde",100,100);
+            this.drawPolyomino(polyomino,canvas);
             this.dataURLs.push(canvas.toDataURL());
             /*
             let dataURL = canvas.toDataURL('image/jpeg',(err,jpeg) => {
