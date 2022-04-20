@@ -20,9 +20,9 @@ class Drawing{
     }
 
     drawPolyomino(polyomino,canvas,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
-        if (this.polyominoCount > 10){
-            return;
-        }
+        //if (this.polyominoCount > 150){
+        //    return;
+        //}
         if (!pointVisited){
             pointVisited = new Set();
         }
@@ -79,7 +79,10 @@ class Drawing{
         let textsize = min_diff/(polyomino.length/2);
         let offset = min_diff/(polyomino.length);
         ctx.font = `${textsize}px ${polyomino.font.name}`;
-        ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
+        //ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
+        if(word === polyomino.word_antipode){
+            ctx.fillText("A",x_avg-offset,y_avg);
+        }
         pointQueue.forEach(point => {
             let newAscii;
             if (ascii >= polyomino.ascii_end){
