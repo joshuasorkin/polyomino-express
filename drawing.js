@@ -11,10 +11,12 @@ class Drawing{
     tileAllCanvases(){
         Object.keys(this.config).forEach(key => {
             let polyomino = this.config[key];
-            console.log({polyomino});
+            //console.log({polyomino});
             let canvas = Canvas.createCanvas(polyomino.width,polyomino.height);
             this.drawPolyomino(polyomino,canvas);
-            this.dataURLs.push(canvas.toDataURL());
+            let dataURL = canvas.toDataURL();
+            console.log({dataURL})
+            this.dataURLs.push(dataURL);
 
             /*
             const callback = () =>{
