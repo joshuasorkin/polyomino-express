@@ -19,7 +19,7 @@ class Drawing{
             let canvas = Canvas.createCanvas(polyomino.canvas.width,polyomino.canvas.height);
             let canvas_svg = SVG(document.documentElement).size(polyomino.canvas.width,polyomino.canvas.height);
             this.drawPolyomino(polyomino,canvas,canvas_svg);
-            canvas_svg.stroke("green");
+            canvas_svg.stroke("purple");
             //this.dataURLs.push(canvas.toDataURL());
             console.log("polyominoes drawn")
             this.SVGs.push(canvas_svg.svg());
@@ -27,9 +27,9 @@ class Drawing{
     }
 
     drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null,lineExists = null){
-        //if (this.polyominoCount > 100){
-        //    return;
-        //}
+        if (this.polyominoCount >= 2){
+            return;
+        }
         if (!pointVisited){
             pointVisited = new Set();
         }
@@ -77,12 +77,14 @@ class Drawing{
             x_max = Math.max(x_max,x);
             y_min = Math.min(y_min,y);
             y_max = Math.max(y_max,y);
-            ctx.lineTo(x,y);
             ctx.moveTo(x,y);
             let lineKey = `${x_prev} ${y_prev} ${x} ${y}`;
-            if (!lineExists.has(lineKey)){
+            let lineKeyReverse = `${x} ${y} ${x_prev} ${y_prev}`
+            if (!(lineExists.has(lineKey) || lineExists.has(lineKeyReverse))){
+                ctx.lineTo(x,y);
                 canvas_svg.line(x_prev,y_prev,x,y);
                 lineExists.add(lineKey);
+                lineExists.add(lineKeyReverse);
             }
         });
         ctx.stroke();
@@ -105,8 +107,8 @@ class Drawing{
                 newAscii = ascii+1;
             }
             
-            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word,point[0],point[1],newAscii,pointVisited);
-            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited);
+            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word,point[0],point[1],newAscii,pointVisited,lineExists);
+            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited,lineExists);
         });
     }
 
