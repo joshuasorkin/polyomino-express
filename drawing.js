@@ -1,16 +1,21 @@
 const fs = require('fs');
+const Canvas = require('canvas');
 
-class Polyomino{
+class Drawing{
     constructor(){
         let rawData = fs.readFileSync("polyomino-config.json");
         this.config = JSON.parse(rawData);
+        this.dataURLs = [];
 
     }
     tileAllCanvases(){
         Object.keys(this.config).forEach(key => {
             let polyomino = this.config[key];
             console.log({polyomino});
-            this.drawPolyomino(polyomino);
+            let canvas = new Canvas(polyomino.width,polyomino.height);
+            this.drawPolyomino(polyomino,canvas);
+            this.dataURLs.push(canvas.toDataURL());
+
             /*
             const callback = () =>{
                 this.drawPolyomino(polyomino);
@@ -20,15 +25,15 @@ class Polyomino{
         })
     }
 
-    drawPolyomino(polyomino,x,y,ascii = polyomino.ascii_start,pointVisited = null){
+    drawPolyomino(polyomino,canvas,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
         if (!pointVisited){
             pointVisited = new Set();
         }
         if (x < 0 || y < 0 || x > polyomino.canvas.width || y > polyomino.canvas.height){
             return;
         }
-        var c = document.getElementById(polyomino.canvas.name);
-        var ctx = c.getContext("2d");
+        //var c = document.getElementById(polyomino.canvas.name);
+        var ctx = canvas.getContext("2d");
         ctx.beginPath();
         ctx.moveTo(x,y);
         let pointQueue = [];
@@ -73,7 +78,7 @@ class Polyomino{
             y_max = Math.max(y_max,y);
             ctx.lineTo(x,y);
             ctx.moveTo(x,y);
-            let newLine = document.createAttributeNS("http://www.w3.org/2000/svg","line")
+            //let newLine = document.createAttributeNS("http://www.w3.org/2000/svg","line")
         });
         ctx.stroke();
         let x_avg = this.average(x_min,x_max);
@@ -118,4 +123,4 @@ class Polyomino{
     }
 }
 
-module.exports = Polyomino;
+module.exports = Drawing;
