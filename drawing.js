@@ -20,6 +20,9 @@ class Drawing{
     }
 
     drawPolyomino(polyomino,canvas,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null){
+        if (this.polyominoCount > 10){
+            return;
+        }
         if (!pointVisited){
             pointVisited = new Set();
         }
@@ -69,6 +72,7 @@ class Drawing{
             //let newLine = document.createAttributeNS("http://www.w3.org/2000/svg","line")
         });
         ctx.stroke();
+        this.polyominoCount++;
         let x_avg = this.average(x_min,x_max);
         let y_avg = this.average(y_min,y_max);
         let min_diff = Math.min(x_max-x_min,y_max-y_min);
