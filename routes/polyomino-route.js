@@ -29,8 +29,10 @@ router.get('/png', function(req, res, next) {
 
 router.get('/svg_download', function (req,res,next) {
     res.download('polyomino.svg',function(err){
-        console.log(`error downloading file: ${err}`);
-    })
+        if(err){
+            console.log(`error downloading file: ${err}`);
+        }   
+    });
 });
 
 module.exports = router;
