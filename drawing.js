@@ -91,7 +91,7 @@ class Drawing{
             }
             ctx.moveTo(x,y);
         });
-        ctx.stroke("black");
+        ctx.stroke("purple");
         this.polyominoCount++;
         //console.log(`${this.polyominoCount}`)
         let x_avg = this.average(x_min,x_max);
