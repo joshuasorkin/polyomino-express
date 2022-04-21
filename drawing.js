@@ -105,7 +105,7 @@ class Drawing{
             ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
             canvas_svg.text(String.fromCharCode(ascii)).attr({
                 x: x_avg-offset,
-                y: y_avg-(offset * 1.1)
+                y: y_avg-(offset * 2)
             });
             textExists.add(textKey);
         }
