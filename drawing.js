@@ -77,10 +77,11 @@ class Drawing{
             y_min = Math.min(y_min,y);
             y_max = Math.max(y_max,y);
             ctx.moveTo(x,y);
+            ctx.lineTo(x,y);
             let lineKey = `${x_prev} ${y_prev} ${x} ${y}`;
             let lineKeyReverse = `${x} ${y} ${x_prev} ${y_prev}`
             if (!(lineExists.has(lineKey) || lineExists.has(lineKeyReverse))){
-                ctx.lineTo(x,y);
+                
                 canvas_svg.line(x_prev,y_prev,x,y);
                 lineExists.add(lineKey);
                 lineExists.add(lineKeyReverse);
