@@ -87,7 +87,7 @@ class Drawing{
                 lineExists.add(lineKeyReverse);
             }
         });
-        ctx.stroke();
+        ctx.stroke("black");
         this.polyominoCount++;
         //console.log(`${this.polyominoCount}`)
         let x_avg = this.average(x_min,x_max);
