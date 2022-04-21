@@ -118,8 +118,8 @@ class Drawing{
                 newAscii = ascii+1;
             }
             
-            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word,point[0],point[1],newAscii,pointVisited,lineExists);
-            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited,lineExists);
+            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word,point[0],point[1],newAscii,pointVisited,lineExists,textExists);
+            this.drawPolyomino(polyomino,canvas,canvas_svg,polyomino.word_antipode,point[0],point[1],newAscii,pointVisited,lineExists,textExists);
         });
     }
 
