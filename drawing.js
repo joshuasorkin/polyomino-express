@@ -20,7 +20,7 @@ class Drawing{
             let canvas_svg = SVG(document.documentElement).size(polyomino.canvas.width,polyomino.canvas.height);
             this.drawPolyomino(polyomino,canvas,canvas_svg);
             canvas_svg.stroke("purple");
-            //this.dataURLs.push(canvas.toDataURL());
+            this.dataURLs.push(canvas.toDataURL());
             this.SVGs.push(canvas_svg.svg());
         })
     }
@@ -87,9 +87,8 @@ class Drawing{
             }
         });
         ctx.stroke();
-        //canvas_svg.stroke("green");
         this.polyominoCount++;
-        console.log(`${this.polyominoCount}`)
+        //console.log(`${this.polyominoCount}`)
         let x_avg = this.average(x_min,x_max);
         let y_avg = this.average(y_min,y_max);
         let min_diff = Math.min(x_max-x_min,y_max-y_min);
