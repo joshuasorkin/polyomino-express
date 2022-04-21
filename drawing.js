@@ -25,7 +25,7 @@ class Drawing{
         })
     }
 
-    drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null,lineExists = null){
+    drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null,lineExists = null,textExists = null){
         if (this.polyominoCount >= 500){
             return;
         }
@@ -34,6 +34,9 @@ class Drawing{
         }
         if (!lineExists){
             lineExists = new Set();
+        }
+        if (!textExists){
+            textExists = new Set();
         }
         if (x < 0 || y < 0 || x > polyomino.canvas.width || y > polyomino.canvas.height){
             return;
@@ -97,11 +100,15 @@ class Drawing{
         let textsize = min_diff/(polyomino.length/2);
         let offset = min_diff/(polyomino.length);
         ctx.font = `${textsize}px ${polyomino.font.name}`;
-        ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
-        canvas_svg.text(String.fromCharCode(ascii)).attr({
-            x: x_avg-offset,
-            y: y_avg-offset
-        });
+        let textKey = `${x_avg} ${y_avg}`;
+        if(!textExists.has(textKey)){
+            ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
+            canvas_svg.text(String.fromCharCode(ascii)).attr({
+                x: x_avg-offset,
+                y: y_avg-offset
+            });
+            textExists.add(textKey);
+        }
         pointQueue.forEach(point => {
             let newAscii;
             if (ascii >= polyomino.ascii_end){
