@@ -76,15 +76,17 @@ class Drawing{
             x_max = Math.max(x_max,x);
             y_min = Math.min(y_min,y);
             y_max = Math.max(y_max,y);
-            ctx.lineTo(x,y);
-            ctx.moveTo(x,y);
+            
+            
             let lineKey = `${x_prev} ${y_prev} ${x} ${y}`;
             let lineKeyReverse = `${x} ${y} ${x_prev} ${y_prev}`
             if (!(lineExists.has(lineKey) || lineExists.has(lineKeyReverse))){
                 canvas_svg.line(x_prev,y_prev,x,y);
+                ctx.lineTo(x,y);
                 lineExists.add(lineKey);
                 lineExists.add(lineKeyReverse);
             }
+            ctx.moveTo(x,y);
         });
         ctx.stroke("black");
         this.polyominoCount++;
