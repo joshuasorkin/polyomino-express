@@ -21,13 +21,12 @@ class Drawing{
             this.drawPolyomino(polyomino,canvas,canvas_svg);
             canvas_svg.stroke("purple");
             //this.dataURLs.push(canvas.toDataURL());
-            console.log("polyominoes drawn")
             this.SVGs.push(canvas_svg.svg());
         })
     }
 
     drawPolyomino(polyomino,canvas,canvas_svg,word=polyomino.word,x = polyomino.x_start,y = polyomino.y_start,ascii = polyomino.ascii_start,pointVisited = null,lineExists = null){
-        if (this.polyominoCount >= 2){
+        if (this.polyominoCount >= 500){
             return;
         }
         if (!pointVisited){
@@ -98,6 +97,10 @@ class Drawing{
         let offset = min_diff/(polyomino.length);
         ctx.font = `${textsize}px ${polyomino.font.name}`;
         ctx.fillText(String.fromCharCode(ascii),x_avg-offset,y_avg);
+        canvas_svg.text(String.fromCharCode(ascii)).attr({
+            x: x_avg-offset,
+            y: y_avg-offset
+        });
         pointQueue.forEach(point => {
             let newAscii;
             if (ascii >= polyomino.ascii_end){

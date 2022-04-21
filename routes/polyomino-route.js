@@ -6,15 +6,26 @@ const drawing = new Drawing();
 drawing.tileAllCanvases();
 
 
-router.get('/', function(req, res, next) {
+router.get('/SVG', function(req, res, next) {
     res.render('polyomino', { 
         title: 'Polyomino',
-        dataURLs: drawing.dataURLs,
+        //dataURLs: drawing.dataURLs,
         SVGs: drawing.SVGs
     })
     .catch(err => {
         console.log({err});
     });
 });
+
+router.get('/png', function(req, res, next) {
+    res.render('polyomino', { 
+        title: 'Polyomino',
+        dataURLs: drawing.dataURLs
+    })
+    .catch(err => {
+        console.log({err});
+    });
+});
+
 
 module.exports = router;
